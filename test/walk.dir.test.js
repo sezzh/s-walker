@@ -9,6 +9,13 @@ test('Should have 7 files in the list', () => {
   return expect(swalker.walk(path.resolve(__dirname, 'src'))).resolves.toEqual(arrayMock)
 })
 
+test('Should return an error message', () => {
+  const wrongPath = 'holi'
+
+  return expect(swalker.walk(wrongPath)).rejects.toMatch('error')
+})
+
+
 /**
 swalker.walk(path.resolve(__dirname, 'src')).then((fileList) => {
   console.log('current three:')
