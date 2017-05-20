@@ -14,11 +14,3 @@ test('Should return an error message', () => {
 
   return expect(swalker.walk(wrongPath)).rejects.toMatch('error')
 })
-
-
-/**
-swalker.walk(path.resolve(__dirname, 'src')).then((fileList) => {
-  console.log('current three:')
-  console.log(fileList)
-})
-*/
