@@ -1,0 +1,19 @@
+{
+  "name": "s-walker",
+  "version": "0.1.0",
+  "description": "A library which returns all files paths recursively",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "keywords": [
+    "recursive",
+    "files",
+    "file system"
+  ],
+  "author": "sezzh <sezzhltd@gmail.com> (https://sezzh.com)",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "jest": "^20.0.3"
+  }
+}
