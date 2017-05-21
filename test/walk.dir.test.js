@@ -3,16 +3,16 @@ const path = require('path')
 
 test('Should have 10 files in the list', () => {
   const arrayMock = [
-    '/Users/sezzh/github/s-walker/test/src/tifis.md',
-    '/Users/sezzh/github/s-walker/test/src/css/styles.css',
-    '/Users/sezzh/github/s-walker/test/src/java/class.java',
-    '/Users/sezzh/github/s-walker/test/src/js/gordito.js',
-    '/Users/sezzh/github/s-walker/test/src/js/hasper.js',
-    '/Users/sezzh/github/s-walker/test/src/js/trufo.js',
-    '/Users/sezzh/github/s-walker/test/src/css/sass/styles.scss',
-    '/Users/sezzh/github/s-walker/test/src/css/stylus/styles.styl',
-    '/Users/sezzh/github/s-walker/test/src/js/components/index.js',
-    '/Users/sezzh/github/s-walker/test/src/css/sass/component/file.less'
+    path.join(__dirname, '/src/tifis.md'),
+    path.join(__dirname, '/src/css/styles.css'),
+    path.join(__dirname, '/src/java/class.java'),
+    path.join(__dirname, '/src/js/gordito.js'),
+    path.join(__dirname, '/src/js/hasper.js'),
+    path.join(__dirname, '/src/js/trufo.js'),
+    path.join(__dirname, '/src/css/sass/styles.scss'),
+    path.join(__dirname, '/src/css/stylus/styles.styl'),
+    path.join(__dirname, '/src/js/components/index.js'),
+    path.join(__dirname, '/src/css/sass/component/file.less')
   ]
 
   return expect(swalker.walk(path.resolve(__dirname, 'src')))
@@ -27,8 +27,8 @@ test('Should return an error message', () => {
 
 test('Should have 2 files', () => {
   const arrayMock = [
-    '/Users/sezzh/github/s-walker/test/docs/html/index.html',
-    '/Users/sezzh/github/s-walker/test/docs/markdown/component.md'
+    path.join(__dirname, '/docs/html/index.html'),
+    path.join(__dirname, '/docs/markdown/component.md')
   ]
 
   return expect(swalker.walk(path.resolve(__dirname, 'docs')))
@@ -37,14 +37,29 @@ test('Should have 2 files', () => {
 
 test('Should return only js and css files', () => {
   const arrayMock = [
-    '/Users/sezzh/github/s-walker/test/src/css/styles.css',
-    '/Users/sezzh/github/s-walker/test/src/js/gordito.js',
-    '/Users/sezzh/github/s-walker/test/src/js/hasper.js',
-    '/Users/sezzh/github/s-walker/test/src/js/trufo.js',
-    '/Users/sezzh/github/s-walker/test/src/js/components/index.js'
+    path.join(__dirname, '/src/css/styles.css'),
+    path.join(__dirname, '/src/js/gordito.js'),
+    path.join(__dirname, '/src/js/hasper.js'),
+    path.join(__dirname, '/src/js/trufo.js'),
+    path.join(__dirname, '/src/js/components/index.js')
   ]
 
   return expect(
     swalker.walk(path.resolve(__dirname, 'src'), {only: ['.js', '.css']})
+  ).resolves.toEqual(arrayMock)
+})
+
+test('Should return all files except .js', () => {
+  const swalker = require('../index.js')
+  const arrayMock = [
+    path.join(__dirname, '/src/tifis.md'),
+    path.join(__dirname, '/src/css/styles.css'),
+    path.join(__dirname, '/src/css/sass/styles.scss'),
+    path.join(__dirname, '/src/css/stylus/styles.styl'),
+    path.join(__dirname, '/src/css/sass/component/file.less')
+  ]
+
+  return expect(
+    swalker.walk(path.resolve(__dirname, 'src'), {except: ['.js', '.java']})
   ).resolves.toEqual(arrayMock)
 })
