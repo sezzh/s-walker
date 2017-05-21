@@ -14,6 +14,7 @@
   "author": "sezzh <sezzhltd@gmail.com> (https://sezzh.com)",
   "license": "GPL-3.0",
   "devDependencies": {
-    "jest": "^20.0.3"
+    "jest": "^20.0.3",
+    "standard": "^10.0.2"
   }
 }
