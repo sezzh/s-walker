@@ -63,3 +63,22 @@ test('Should return all files except .js', () => {
     swalker.walk(path.resolve(__dirname, 'src'), {except: ['.js', '.java']})
   ).resolves.toEqual(arrayMock)
 })
+
+test('Should return relative paths', () => {
+  const swalkerOpts = {
+    except: ['.js', '.java'],
+    pathType: 'relative'
+  }
+  const swalker = require('../index.js')
+  const arrayMock = [
+    'tifis.md',
+    'css/styles.css',
+    'css/sass/styles.scss',
+    'css/stylus/styles.styl',
+    'css/sass/component/file.less'
+  ]
+
+  return expect(
+    swalker.walk(path.resolve(__dirname, 'src'), swalkerOpts)
+  ).resolves.toEqual(arrayMock)
+})
