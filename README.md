@@ -6,7 +6,7 @@ A small support library for Node.js file system which returns the path of each f
 You can install it through npm:
 
 ```bash
-$ npm install --save-dev s-walker
+$ npm install s-walker
 ```
 Or via a clone as well :)
 
@@ -51,6 +51,21 @@ const filesPath = path.resolve(__dirname, 'src')
 
 swalker.walk(filesPath, {except: ['.js', '.md']}).then((files) => {
   // files array will contain all kind of file paths except .js or .md.
+})
+
+```
+
+### Getting relative paths
+If you want instead of absolute paths a relative ones you can use the option
+`pathType: 'relative'` inside the object opts:
+
+```javascript
+const swalker = require('s-walker')
+
+const filesPath = path.resolve(__dirname, 'src')
+
+swalker.walk(filesPath, {except: ['.js', '.md'], pathType: 'relative'}).then((files) => {
+  // files array will contain all kind of file paths except .js or .md and relative paths to the src folder.
 })
 
 ```
